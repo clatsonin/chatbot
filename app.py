@@ -5,14 +5,13 @@ import openai
 app = Flask(__name__)
 
 # Set up OpenAI API credentials
-from dotenv import load_dotenv
-import os
+from dotenv import dotenv_values
 
 # Load variables from .env file
-load_dotenv()
+env_vars = dotenv_values(".env")
 
 # Access the API key
-openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_api_key = env_vars.get("OPENAI_API_KEY")
 
 # Define the default route to return the index.html file
 @app.route("/")
